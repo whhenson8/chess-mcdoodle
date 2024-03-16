@@ -1,11 +1,13 @@
 import pygame
 from const import *
 from board import Board
+from dragger import Dragger
 
 class Game:
 
     def __init__(self):
         self.board = Board()
+        self.dragger = Dragger()
 
     def show_bg(self, surface):
         for row in range(ROWS):
@@ -32,3 +34,11 @@ class Game:
                     piece.texture_rect = img.get_rect(center=img_center)
                     surface.blit(img, piece.texture_rect)
 
+                    # texture
+                    self.piece.set_texture(size=120)
+                    texture = self.piece.texture
+                    # img
+                    img = pygame.image.load(texture)
+                    # rect
+                    img_center = (self.mouseX, self.mouseY)
+                    self.piece.texture_rect = img.get_rect(img_center)
