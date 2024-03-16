@@ -35,10 +35,10 @@ class Game:
                     surface.blit(img, piece.texture_rect)
 
                     # texture
-                    self.piece.set_texture(size=120)
-                    texture = self.piece.texture
+#                    self.piece.set_texture(size=128)
+#                    texture = self.piece.texture
                     # img
-                    img = pygame.image.load(texture)
+#                    img = pygame.image.load(texture)
                     # rect
-                    img_center = (self.mouseX, self.mouseY)
-                    self.piece.texture_rect = img.get_rect(img_center)
+#                    img_center = (self.mouseX, self.mouseY)
+#                    self.piece.texture_rect = img.get_rect(img_center)
