@@ -13,9 +13,9 @@ class Game:
         for row in range(ROWS):
             for col in range(COLS):
                 if (row +col) % 2 == 0:
-                    color = (240,240,240)
+                    color = (252,168,0)
                 else:
-                    color = (30,30,30)
+                    color = (247,217,177)
 
                 rect = (col * SQSIZE, row * SQSIZE, SQSIZE, SQSIZE)
                 
@@ -29,10 +29,13 @@ class Game:
                 if self.board.squares[row][col].has_piece():
                     piece = self.board.squares[row][col].piece
 
-                    img = pygame.image.load(piece.texture)
-                    img_center = col * SQSIZE + SQSIZE // 2, row * SQSIZE + SQSIZE // 2
-                    piece.texture_rect = img.get_rect(center=img_center)
-                    surface.blit(img, piece.texture_rect)
+                    # all pieces except dragger piece
+                    if piece is not self.dragger.piece:
+                        piece.set_texture(size =80)
+                        img = pygame.image.load(piece.texture)
+                        img_center = col * SQSIZE + SQSIZE // 2, row * SQSIZE + SQSIZE // 2
+                        piece.texture_rect = img.get_rect(center=img_center)
+                        surface.blit(img, piece.texture_rect)
 
                     # texture
 #                    self.piece.set_texture(size=128)
