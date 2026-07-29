@@ -1,4 +1,5 @@
 import pygame
+import os
 from const import *
 from board import Board
 from dragger import Dragger
@@ -31,8 +32,10 @@ class Game:
 
                     # all pieces except dragger piece
                     if piece is not self.dragger.piece:
-                        piece.set_texture(size =80)
-                        img = pygame.image.load(piece.texture)
+                        piece.set_texture(size=80)
+                        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+                        img_path = os.path.join(BASE_DIR, piece.texture)
+                        img = pygame.image.load(img_path)
                         img_center = col * SQSIZE + SQSIZE // 2, row * SQSIZE + SQSIZE // 2
                         piece.texture_rect = img.get_rect(center=img_center)
                         surface.blit(img, piece.texture_rect)
